@@ -1,12 +1,21 @@
 package eva.developez.crud_jpa.logic;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
 /**
  *
  * @author aquas
  */
+@Entity
 public class Mascota {
     
     // Atributos
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int num_cliente;
     private String nombreMascota;
     private String raza;
@@ -16,6 +25,7 @@ public class Mascota {
     private String atencion_especial;
     
     // Objeto dueño para relacion 1n1
+    @OneToOne
     private Duenio unDuenio;
         
     // Constructores
