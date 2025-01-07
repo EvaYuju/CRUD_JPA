@@ -53,6 +53,11 @@ public class CargarDatos extends javax.swing.JFrame {
         btnLimpiar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnLimpiar.setIcon(new javax.swing.ImageIcon("C:\\Users\\aquas\\Escritorio\\TRAINNING JAVA\\imgs\\logoEliminar.png")); // NOI18N
         btnLimpiar.setText("  Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
         btnGuardar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnGuardar.setIcon(new javax.swing.ImageIcon("C:\\Users\\aquas\\Escritorio\\TRAINNING JAVA\\imgs\\logoGuardar.png")); // NOI18N
@@ -264,6 +269,18 @@ public class CargarDatos extends javax.swing.JFrame {
     private void txtRazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRazaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtRazaActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        // Limpiar campos formulario
+        txtNomMascota.setText("");
+        txtRaza.setText("");
+        txtColor.setText("");
+        txtNomDuenio.setText("");
+        txtTlf.setText("");
+        txtObserv.setText("");
+        cmbAlerg.setSelectedIndex(0);
+        cmbAtEsp.setSelectedIndex(0);
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
