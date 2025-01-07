@@ -1,12 +1,21 @@
 package eva.developez.crud_jpa.logic;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  *
  * @author aquas
  */
-public class Duenio {
+@Entity
+public class Duenio implements Serializable {
     
     // atributos
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id_duenio;
     private String nombreDuenio;
     private String telefono;
