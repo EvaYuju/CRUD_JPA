@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package eva.developez.crud_jpa.persistence;
 
 import eva.developez.crud_jpa.logic.Mascota;
@@ -9,6 +5,7 @@ import eva.developez.crud_jpa.persistence.exceptions.NonexistentEntityException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.persistence.Persistence;
 import jakarta.persistence.Query;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
@@ -25,6 +22,10 @@ public class MascotaJpaController implements Serializable {
         this.emf = emf;
     }
     private EntityManagerFactory emf = null;
+    
+    public MascotaJpaController() {
+        emf = Persistence.createEntityManagerFactory("PeluCaninaPU");
+    }
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
