@@ -1,5 +1,6 @@
 package eva.developez.crud_jpa.logic;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,7 +12,7 @@ import javax.persistence.OneToOne;
  * @author aquas
  */
 @Entity
-public class Mascota {
+public class Mascota implements Serializable {
     
     // Atributos
     @Id
