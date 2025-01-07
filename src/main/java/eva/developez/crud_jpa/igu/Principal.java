@@ -123,7 +123,11 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVerDatosActionPerformed
 
     private void btnCargaDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargaDatosActionPerformed
-        // TODO add your handling code here:
+        
+      // Creo una instancia del Frame que queremos cargar
+      CargarDatos pantallaCargar = new CargarDatos();
+      pantallaCargar.setVisible(true);
+      pantallaCargar.setLocationRelativeTo(null); //Se abre en medio por defecto
     }//GEN-LAST:event_btnCargaDatosActionPerformed
 
     private void btnSalirPpalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirPpalActionPerformed
