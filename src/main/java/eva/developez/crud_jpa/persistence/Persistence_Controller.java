@@ -6,4 +6,8 @@ package eva.developez.crud_jpa.persistence;
  */
 public class Persistence_Controller {
     
+    //Instancias a los JPA Controllers
+    MascotaJpaController mascotaJpa = new MascotaJpaController();
+    DuenioJpaController duenioJpa = new DuenioJpaController();
+    
 }
