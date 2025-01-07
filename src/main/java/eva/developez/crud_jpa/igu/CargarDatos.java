@@ -1,12 +1,17 @@
 package eva.developez.crud_jpa.igu;
 
+import eva.developez.crud_jpa.logic.Controller;
+
 /**
  *
  * @author aquas
  */
 public class CargarDatos extends javax.swing.JFrame {
+    
+    Controller control = new Controller();
 
     public CargarDatos() {
+        //control = new Controller(); // ToDo
         initComponents();
     }
 
@@ -62,6 +67,11 @@ public class CargarDatos extends javax.swing.JFrame {
         btnGuardar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnGuardar.setIcon(new javax.swing.ImageIcon("C:\\Users\\aquas\\Escritorio\\TRAINNING JAVA\\imgs\\logoGuardar.png")); // NOI18N
         btnGuardar.setText("  Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelBtnPpalLayout = new javax.swing.GroupLayout(panelBtnPpal);
         panelBtnPpal.setLayout(panelBtnPpalLayout);
@@ -192,7 +202,6 @@ public class CargarDatos extends javax.swing.JFrame {
                 .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAlergia)
                     .addComponent(cmbAlerg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelFormularioLayout.createSequentialGroup()
                         .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -281,6 +290,20 @@ public class CargarDatos extends javax.swing.JFrame {
         cmbAlerg.setSelectedIndex(0);
         cmbAtEsp.setSelectedIndex(0);
     }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // Vbles auxiliares (más fácil)
+        String nomMascota = txtNomMascota.getText();
+        String raza = txtRaza.getText();
+        String color = txtColor.getText();
+        String observ = txtObserv.getText();
+        String nomDuenio = txtNomDuenio.getText();
+        String tlf = txtTlf.getText();
+        String alergico = (String) cmbAlerg.getSelectedItem();
+        String atEsp = (String) cmbAtEsp.getSelectedItem();
+        
+        control.guardar(nomMascota,raza,color,alergico,atEsp,nomDuenio,tlf,observ);
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
