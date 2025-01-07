@@ -19,7 +19,7 @@
         <dependency>
             <groupId>jakarta.persistence</groupId>
             <artifactId>jakarta.persistence-api</artifactId>
-            <version>3.0.0</version> <!-- Asegúrate de usar la versión adecuada de Jakarta -->
+            <version>3.0.0</version> <!-- ¡¡versión adecuada de Jakarta -->
         </dependency>
 
         <!-- EclipseLink como implementación JPA -->
@@ -36,7 +36,7 @@
             <version>2.7.12</version>
         </dependency>
 
-        <!-- Dependencia para el procesador de modelos JPA de EclipseLink (si es necesario) -->
+        <!-- Dependencia para el procesador de modelos JPA de EclipseLink -->
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>org.eclipse.persistence.jpa.modelgen.processor</artifactId>
