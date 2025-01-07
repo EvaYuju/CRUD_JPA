@@ -1,5 +1,7 @@
 package eva.developez.crud_jpa;
 
+import eva.developez.crud_jpa.igu.Principal;
+
 /**
  *
  * @author aquas
@@ -7,6 +9,9 @@ package eva.developez.crud_jpa;
 public class CRUD_JPA {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+
+        Principal ppal = new Principal();
+        ppal.setVisible(true);
+        ppal.setLocationRelativeTo(null);
     }
 }
