@@ -15,7 +15,7 @@ public class Duenio implements Serializable {
     
     // atributos
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_duenio;
     private String nombreDuenio;
     private String telefono;

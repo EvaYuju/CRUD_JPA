@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 /**
@@ -16,7 +17,7 @@ public class Mascota implements Serializable {
     
     // Atributos
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int num_cliente;
     private String nombreMascota;
     private String raza;
@@ -27,6 +28,7 @@ public class Mascota implements Serializable {
     
     // Objeto dueño para relacion 1n1
     @OneToOne
+    @JoinColumn(name = "duenio_id", referencedColumnName = "id_duenio")
     private Duenio unDuenio;
         
     // Constructores
