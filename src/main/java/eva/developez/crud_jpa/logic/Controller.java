@@ -11,6 +11,7 @@ public class Controller {
     // Logica llama a la persistencia
     Persistence_Controller controlPersis = new Persistence_Controller();
 
+    // Recibe de IGU los datos
     public void guardar(String nomMascota, String raza, String color, String alergico, String atEsp, String nomDuenio, String tlf, String observ) {
 
         // Creamos el dueño y asignamos sus valores
