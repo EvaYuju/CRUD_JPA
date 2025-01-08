@@ -15,7 +15,7 @@ public class Persistence_Controller {
 
     public void guardar(Duenio duenio, Mascota mascota) {
 
-        //Uso de metodos desde jpa controller
+        //Uso de metodos prederminados desde jpa controller
         // Crear en la BD el Dueño
         duenioJpa.create(duenio);
         
