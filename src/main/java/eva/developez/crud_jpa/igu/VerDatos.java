@@ -1,12 +1,20 @@
 package eva.developez.crud_jpa.igu;
 
+import eva.developez.crud_jpa.logic.Controller;
+import eva.developez.crud_jpa.logic.Mascota;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author aquas
  */
 public class VerDatos extends javax.swing.JFrame {
+    
+    Controller control; // = null; vbles globales inicializado para evitar problemas
 
     public VerDatos() {
+        control = new Controller();
         initComponents();
     }
 
@@ -179,7 +187,42 @@ public class VerDatos extends javax.swing.JFrame {
 
     private void cargarTabla() {
 
+        // Definir el modelo que queremos que tenga la tabla
+        DefaultTableModel tabla = new DefaultTableModel() {
+            // Hacer no editables filas y columnas
+            @Override // Importante previene fallo carga tabla +++
+            public boolean isCellEditable (int row, int column){
+                return false;
+            }       
+        }; // parte de la instancia
         
+        /* Nombres de columnas [vector]**************************************************************/
+        String titulos[] = {"Nº","Nombre","Raza","Color","Alérg","At. Esp","Observ.","Dueño","Tlf."};
+        tabla.setColumnIdentifiers(titulos);
+        
+        // Carga dedatos desde BD
+        List <Mascota> listaMascotas = control.cargarDatosTabla();
+        
+        // Recorrer la lista y mostrar cada uno de los elementos en la tabla
+        if(listaMascotas!=null){
+            for (Mascota mascota : listaMascotas) {
+                Object[] obj = {
+                    mascota.getNum_cliente(),
+                    mascota.getNombreMascota(),
+                    mascota.getRaza(), 
+                    mascota.getColor(), 
+                    mascota.getAlergico(),
+                    mascota.getAtencion_especial(),
+                    mascota.getObservaciones(),
+                    mascota.getUnDuenio().getNombreDuenio(),
+                    mascota.getUnDuenio().getTelefono()
+                };
+                
+                tabla.addRow(obj);
+            }
+        }
+        // Asignación modelo de la tabla a la igu
+        tableMascotas.setModel(tabla);
         
     }
 }

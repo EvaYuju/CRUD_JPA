@@ -1,6 +1,7 @@
 package eva.developez.crud_jpa.logic;
 
 import eva.developez.crud_jpa.persistence.Persistence_Controller;
+import java.util.List;
 
 /**
  *
@@ -33,10 +34,12 @@ public class Controller {
         
         // Llamamos a la persistencia desde la logica de crear objetos en la BD
         controlPersis.guardar(duenio,mascota);
-        
-        
-        
-        
+    }
+
+    // Cargar datos BD en tabla
+    public List<Mascota> cargarDatosTabla() {
+
+        return controlPersis.cargarDatos();
         
     }
        

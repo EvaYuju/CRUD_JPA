@@ -2,6 +2,7 @@ package eva.developez.crud_jpa.persistence;
 
 import eva.developez.crud_jpa.logic.Duenio;
 import eva.developez.crud_jpa.logic.Mascota;
+import java.util.List;
 
 /**
  *
@@ -22,6 +23,11 @@ public class Persistence_Controller {
         // Crear en la BD la mascota
         mascotaJpa.create(mascota);
         
+    }
+
+    public List<Mascota> cargarDatos() {
+
+        return mascotaJpa.findMascotaEntities();
     }
     
 }

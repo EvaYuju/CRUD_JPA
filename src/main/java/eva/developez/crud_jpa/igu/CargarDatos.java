@@ -54,7 +54,7 @@ public class CargarDatos extends javax.swing.JFrame {
         lblTitleCargar.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         lblTitleCargar.setText("Carga de Datos");
 
-        lblImagen.setIcon(new javax.swing.ImageIcon("C:\\Users\\aquas\\Escritorio\\TRAINNING JAVA\\kiriXS.png")); // NOI18N
+        lblImagen.setIcon(new javax.swing.ImageIcon("C:\\Users\\aquas\\Escritorio\\TRAINNING JAVA\\imgs\\kiriXS.png")); // NOI18N
         lblImagen.setText("jLabel1");
 
         btnLimpiar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
