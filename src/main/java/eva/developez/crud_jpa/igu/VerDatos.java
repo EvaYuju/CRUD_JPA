@@ -3,6 +3,8 @@ package eva.developez.crud_jpa.igu;
 import eva.developez.crud_jpa.logic.Controller;
 import eva.developez.crud_jpa.logic.Mascota;
 import java.util.List;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -10,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
  * @author aquas
  */
 public class VerDatos extends javax.swing.JFrame {
-    
+
     Controller control; // = null; vbles globales inicializado para evitar problemas
 
     public VerDatos() {
@@ -169,7 +171,21 @@ public class VerDatos extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        // TODO add your handling code here:
+        // Control tabla no vacia
+        if (tableMascotas.getRowCount() > 0) {
+            //Control que haya seleccionado alguna fila
+            if (tableMascotas.getSelectedRow() != -1) {
+                int num_cliente = Integer.parseInt((String.valueOf(tableMascotas.getValueAt(tableMascotas.getSelectedRow(), 0))));
+                control.borrarMascota(num_cliente);
+
+                // Crear mensaje 
+                JOptionPane optionPane = new JOptionPane("Registro borrado");
+                optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+                JDialog dialog = optionPane.createDialog("Se eliminó correctamente");
+                dialog.setAlwaysOnTop(true);
+                dialog.setVisible(true);
+            }
+        }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
 
@@ -191,38 +207,38 @@ public class VerDatos extends javax.swing.JFrame {
         DefaultTableModel tabla = new DefaultTableModel() {
             // Hacer no editables filas y columnas
             @Override // Importante previene fallo carga tabla +++
-            public boolean isCellEditable (int row, int column){
+            public boolean isCellEditable(int row, int column) {
                 return false;
-            }       
+            }
         }; // parte de la instancia
-        
+
         /* Nombres de columnas [vector]**************************************************************/
-        String titulos[] = {"Nº","Nombre","Raza","Color","Alérg","At. Esp","Observ.","Dueño","Tlf."};
+        String titulos[] = {"Nº", "Nombre", "Raza", "Color", "Alérg", "At. Esp", "Observ.", "Dueño", "Tlf."};
         tabla.setColumnIdentifiers(titulos);
-        
+
         // Carga dedatos desde BD
-        List <Mascota> listaMascotas = control.cargarDatosTabla();
-        
+        List<Mascota> listaMascotas = control.cargarDatosTabla();
+
         // Recorrer la lista y mostrar cada uno de los elementos en la tabla
-        if(listaMascotas!=null){
+        if (listaMascotas != null) {
             for (Mascota mascota : listaMascotas) {
                 Object[] obj = {
                     mascota.getNum_cliente(),
                     mascota.getNombreMascota(),
-                    mascota.getRaza(), 
-                    mascota.getColor(), 
+                    mascota.getRaza(),
+                    mascota.getColor(),
                     mascota.getAlergico(),
                     mascota.getAtencion_especial(),
                     mascota.getObservaciones(),
                     mascota.getUnDuenio().getNombreDuenio(),
                     mascota.getUnDuenio().getTelefono()
                 };
-                
+
                 tabla.addRow(obj);
             }
         }
         // Asignación modelo de la tabla a la igu
         tableMascotas.setModel(tabla);
-        
+
     }
 }
