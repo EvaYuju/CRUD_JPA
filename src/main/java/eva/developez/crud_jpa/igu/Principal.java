@@ -119,15 +119,18 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVerDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerDatosActionPerformed
-        // TODO add your handling code here:
+
+      // Creo una instancia del Frame que queremos cargar
+      VerDatos pantallaVerDatos = new VerDatos();
+      pantallaVerDatos.setVisible(true);
+      pantallaVerDatos.setLocationRelativeTo(null); //Se abre en medio por defecto
     }//GEN-LAST:event_btnVerDatosActionPerformed
 
     private void btnCargaDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargaDatosActionPerformed
         
-      // Creo una instancia del Frame que queremos cargar
       CargarDatos pantallaCargar = new CargarDatos();
       pantallaCargar.setVisible(true);
-      pantallaCargar.setLocationRelativeTo(null); //Se abre en medio por defecto
+      pantallaCargar.setLocationRelativeTo(null); 
     }//GEN-LAST:event_btnCargaDatosActionPerformed
 
     private void btnSalirPpalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirPpalActionPerformed
