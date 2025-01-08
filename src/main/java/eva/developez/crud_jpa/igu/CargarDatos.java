@@ -1,6 +1,8 @@
 package eva.developez.crud_jpa.igu;
 
 import eva.developez.crud_jpa.logic.Controller;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -303,6 +305,13 @@ public class CargarDatos extends javax.swing.JFrame {
         String atEsp = (String) cmbAtEsp.getSelectedItem();
         
         control.guardar(nomMascota,raza,color,alergico,atEsp,nomDuenio,tlf,observ);
+        
+        // Crear mensaje 
+        JOptionPane optionPane = new JOptionPane("GUARDADO CORRECTAMENTE");
+        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        JDialog dialog = optionPane.createDialog("Se guardó correctamente");
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
     }//GEN-LAST:event_btnGuardarActionPerformed
 
 
