@@ -47,6 +47,10 @@ public class Controller {
 
         controlPersis.borrarMascota(num_cliente);
     }
+
+    public void editarMascota(int num_cliente) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
        
     
     
