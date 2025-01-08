@@ -183,6 +183,9 @@ public class VerDatos extends javax.swing.JFrame {
                 
                 // Mensaje de borrado correcto
                 mostrarMensaje("Mascota eliminada correctamente", "Info", "Borrado de mascota");
+                
+                //Actualiza tabla
+                cargarTabla();
             }
             else {
                 mostrarMensaje("No ha seleccionado ninguna mascota", "Error", "Error al eliminar");
@@ -199,7 +202,7 @@ public class VerDatos extends javax.swing.JFrame {
         if (tipo.equals("Info")){
         optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
         } else if (tipo.equals("Error")) {
-            optionPane.setMessageType(ERROR);
+            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
         }
         JDialog dialog = optionPane.createDialog(titulo);
         dialog.setAlwaysOnTop(true);

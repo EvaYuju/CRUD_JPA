@@ -2,7 +2,10 @@ package eva.developez.crud_jpa.persistence;
 
 import eva.developez.crud_jpa.logic.Duenio;
 import eva.developez.crud_jpa.logic.Mascota;
+import eva.developez.crud_jpa.persistence.exceptions.NonexistentEntityException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -28,6 +31,16 @@ public class Persistence_Controller {
     public List<Mascota> cargarDatos() {
 
         return mascotaJpa.findMascotaEntities();
+    }
+
+    public void borrarMascota(int num_cliente) {
+
+        try {
+            mascotaJpa.destroy(num_cliente);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(Persistence_Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
     
 }

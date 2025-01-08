@@ -42,6 +42,11 @@ public class Controller {
         return controlPersis.cargarDatos();
         
     }
+
+    public void borrarMascota(int num_cliente) {
+
+        controlPersis.borrarMascota(num_cliente);
+    }
        
     
     
