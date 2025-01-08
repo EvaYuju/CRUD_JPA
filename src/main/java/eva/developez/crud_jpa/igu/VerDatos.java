@@ -175,19 +175,36 @@ public class VerDatos extends javax.swing.JFrame {
         if (tableMascotas.getRowCount() > 0) {
             //Control que haya seleccionado alguna fila
             if (tableMascotas.getSelectedRow() != -1) {
+                // Obtengo id de la mascota a eliminar
                 int num_cliente = Integer.parseInt((String.valueOf(tableMascotas.getValueAt(tableMascotas.getSelectedRow(), 0))));
+                
+                // Llamo al metodo borrar
                 control.borrarMascota(num_cliente);
-
-                // Crear mensaje 
-                JOptionPane optionPane = new JOptionPane("Registro borrado");
-                optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
-                JDialog dialog = optionPane.createDialog("Se eliminó correctamente");
-                dialog.setAlwaysOnTop(true);
-                dialog.setVisible(true);
+                
+                // Mensaje de borrado correcto
+                mostrarMensaje("Mascota eliminada correctamente", "Info", "Borrado de mascota");
             }
+            else {
+                mostrarMensaje("No ha seleccionado ninguna mascota", "Error", "Error al eliminar");
+            }
+        }
+        else {
+            mostrarMensaje("No hay datos", "Error", "Error");
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
+    private void mostrarMensaje(String mensaje, String tipo, String titulo) {
+        // Crear mensaje 
+        JOptionPane optionPane = new JOptionPane(mensaje);
+        if (tipo.equals("Info")){
+        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        } else if (tipo.equals("Error")) {
+            optionPane.setMessageType(ERROR);
+        }
+        JDialog dialog = optionPane.createDialog(titulo);
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete;
@@ -241,4 +258,5 @@ public class VerDatos extends javax.swing.JFrame {
         tableMascotas.setModel(tabla);
 
     }
+
 }
