@@ -1,5 +1,7 @@
 package eva.developez.crud_jpa.igu;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author aquas
@@ -134,7 +136,16 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCargaDatosActionPerformed
 
     private void btnSalirPpalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirPpalActionPerformed
-        // TODO add your handling code here:
+        // Confirmar salida
+    int respuesta = JOptionPane.showConfirmDialog(
+        this,
+        "¿Estás seguro de que deseas salir de la aplicación?",
+        "Confirmar salida",
+        JOptionPane.YES_NO_OPTION,
+        JOptionPane.QUESTION_MESSAGE);
+    if (respuesta == JOptionPane.YES_OPTION) {
+        System.exit(0); // Cerrar la aplicación
+    }
     }//GEN-LAST:event_btnSalirPpalActionPerformed
 
 
