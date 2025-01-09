@@ -49,7 +49,13 @@ public class Controller {
     }
 
     public void editarMascota(int num_cliente) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+        
+    }
+
+    public Mascota cargarMascota(int num_cliente) {
+
+        return controlPersis.traerMascota(num_cliente);
     }
        
     

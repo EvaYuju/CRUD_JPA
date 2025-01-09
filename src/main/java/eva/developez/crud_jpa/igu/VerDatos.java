@@ -20,6 +20,7 @@ public class VerDatos extends javax.swing.JFrame {
     public VerDatos() {
         control = new Controller();
         initComponents();
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -173,8 +174,8 @@ public class VerDatos extends javax.swing.JFrame {
                 int num_cliente = Integer.parseInt((String.valueOf(tableMascotas.getValueAt(tableMascotas.getSelectedRow(), 0))));
                 
                 
-                // Creo una instancia del Frame que queremos cargar      
-                ModificarDatos pantallaModificarDatos = new ModificarDatos();
+                // Creo una instancia del Frame que queremos cargar y le tengo que pasar el dato para que cargue      
+                ModificarDatos pantallaModificarDatos = new ModificarDatos(num_cliente);
                 pantallaModificarDatos.setVisible(true);      
                 pantallaModificarDatos.setLocationRelativeTo(null); //Se abre en medio por defecto
                 

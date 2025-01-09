@@ -1,6 +1,7 @@
 package eva.developez.crud_jpa.igu;
 
 import eva.developez.crud_jpa.logic.Controller;
+import eva.developez.crud_jpa.logic.Mascota;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
@@ -10,11 +11,15 @@ import javax.swing.JOptionPane;
  */
 public class ModificarDatos extends javax.swing.JFrame {
     
-    Controller control = new Controller();
+    Controller control = null;
+    int num_cliente; // Vbla global que reciba
 
-    public ModificarDatos() {
-        //control = new Controller(); // ToDo
+    public ModificarDatos(int num_cliente) {
+        control = new Controller(); 
+        this.num_cliente = num_cliente; // Obtenemos el dato de la vble
         initComponents();
+        // Cargar datos
+        cargarDatos (num_cliente);
     }
 
     @SuppressWarnings("unchecked")
@@ -307,7 +312,7 @@ public class ModificarDatos extends javax.swing.JFrame {
         control.guardar(nomMascota,raza,color,alergico,atEsp,nomDuenio,tlf,observ);
         
         // Crear mensaje 
-        JOptionPane optionPane = new JOptionPane("GUARDADO CORRECTAMENTE");
+        JOptionPane optionPane = new JOptionPane("EDITADO CORRECTAMENTE");
         optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
         JDialog dialog = optionPane.createDialog("Se guardó correctamente");
         dialog.setAlwaysOnTop(true);
@@ -344,4 +349,32 @@ public class ModificarDatos extends javax.swing.JFrame {
     private javax.swing.JTextField txtRaza;
     private javax.swing.JTextField txtTlf;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarDatos(int num_cliente) {
+
+        Mascota mascota = control.cargarMascota(num_cliente);
+        
+        // Setear datos en la interfaz
+        txtNomMascota.setText(mascota.getNombreMascota());
+        txtRaza.setText(mascota.getRaza());
+        txtColor.setText(mascota.getColor());
+        txtNomDuenio.setText(mascota.getUnDuenio().getNombreDuenio());
+        txtTlf.setText(mascota.getUnDuenio().getTelefono());
+        txtObserv.setText(mascota.getObservaciones());
+        // combobox 
+        if(mascota.getAlergico().equals("SI")) {
+            cmbAlerg.setSelectedIndex(1);
+        } else { 
+            if(mascota.getAlergico().equals("NO"))
+            cmbAlerg.setSelectedIndex(2);
+        }
+        
+        if(mascota.getAtencion_especial().equals("SI")) {
+            cmbAtEsp.setSelectedIndex(1);
+        } else { 
+            if(mascota.getAtencion_especial().equals("NO"))
+            cmbAtEsp.setSelectedIndex(2);
+        }
+
+    }
 }

@@ -42,5 +42,10 @@ public class Persistence_Controller {
         }
         
     }
-    
+
+    public Mascota traerMascota(int num_cliente) {
+
+        return mascotaJpa.findMascota(num_cliente);
+    }
+
 }
