@@ -13,6 +13,8 @@ public class ModificarDatos extends javax.swing.JFrame {
     
     Controller control = null;
     int num_cliente; // Vbla global que reciba
+    Mascota mascota = control.cargarMascota(num_cliente);
+
 
     public ModificarDatos(int num_cliente) {
         control = new Controller(); 
@@ -299,7 +301,8 @@ public class ModificarDatos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-/*        // Vbles auxiliares (más fácil)
+        // Vbles auxiliares (más fácil)
+        //Datos Mascota y Dueño
         String nomMascota = txtNomMascota.getText();
         String raza = txtRaza.getText();
         String color = txtColor.getText();
@@ -309,14 +312,13 @@ public class ModificarDatos extends javax.swing.JFrame {
         String alergico = (String) cmbAlerg.getSelectedItem();
         String atEsp = (String) cmbAtEsp.getSelectedItem();
         
-        control.guardar(nomMascota,raza,color,alergico,atEsp,nomDuenio,tlf,observ);
+        //control.guardar(nomMascota,raza,color,alergico,atEsp,nomDuenio,tlf,observ); 
+        // * Ahora hay que hacerla para mascota y dueño (2 tablas)
+        control.modificarMascota(mascota , nomMascota,raza,color,alergico,atEsp,nomDuenio,tlf,observ); 
         
         // Crear mensaje 
-        JOptionPane optionPane = new JOptionPane("EDITADO CORRECTAMENTE");
-        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
-        JDialog dialog = optionPane.createDialog("Se guardó correctamente");
-        dialog.setAlwaysOnTop(true);
-        dialog.setVisible(true);*/
+        mostrarMensaje("Edición realizada correctamente", "Info", "Edición correcta");
+
     }//GEN-LAST:event_btnGuardarActionPerformed
 
 
@@ -351,8 +353,6 @@ public class ModificarDatos extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void cargarDatos(int num_cliente) {
-
-        Mascota mascota = control.cargarMascota(num_cliente);
         
         // Setear datos en la interfaz
         txtNomMascota.setText(mascota.getNombreMascota());
@@ -377,4 +377,17 @@ public class ModificarDatos extends javax.swing.JFrame {
         }
 
     }
+    
+      private void mostrarMensaje(String mensaje, String tipo, String titulo) {
+    // Crear mensaje 
+    JOptionPane optionPane = new JOptionPane(mensaje);
+    if (tipo.equals("Info")) {
+        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+    } else if (tipo.equals("Error")) {
+        optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+    }
+    JDialog dialog = optionPane.createDialog(titulo);
+    dialog.setAlwaysOnTop(true);
+    dialog.setVisible(true);
+}
 }
