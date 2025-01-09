@@ -178,12 +178,10 @@ public class VerDatos extends javax.swing.JFrame {
                 ModificarDatos pantallaModificarDatos = new ModificarDatos(num_cliente);
                 pantallaModificarDatos.setVisible(true);      
                 pantallaModificarDatos.setLocationRelativeTo(null); //Se abre en medio por defecto
-                
+                this.dispose();
                 /*// Llamo al metodo editar
                 control.editarMascota(num_cliente);*/
                 
-                // Mensaje de borrado correcto
-                mostrarMensaje("Mascota actualizada correctamente", "Info", "Edición de mascota");
                 //Actualiza tabla
                 cargarTabla();
             } else {
@@ -192,6 +190,8 @@ public class VerDatos extends javax.swing.JFrame {
         } else {
             mostrarMensaje("No hay datos", "Error", "Error");
         }
+
+        
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened

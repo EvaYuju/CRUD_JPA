@@ -11,6 +11,7 @@ public class Controller {
     
     // Logica llama a la persistencia
     Persistence_Controller controlPersis = new Persistence_Controller();
+    private Mascota mascota;
 
     // Recibe de IGU los datos
     public void guardar(String nomMascota, String raza, String color, String alergico, String atEsp, String nomDuenio, String tlf, String observ) {
@@ -50,7 +51,7 @@ public class Controller {
 
     public void editarMascota(int num_cliente) {
 
-        
+        controlPersis.modificarMascota(mascota);
     }
 
     public Mascota cargarMascota(int num_cliente) {
@@ -77,8 +78,7 @@ public class Controller {
         mascota.setObservaciones(observ);        
 
         // Modifico mascota
-        controlPersis.modificarMascota(mascota);
-        
+        controlPersis.modificarMascota(mascota);      
         // Seteo valores del dueño (de esa mascota)
         //Duenio dueno = controlPersis.buscarDuenio(); // otro metodo ...
         Duenio dueno = this.buscarDuenio(mascota.getUnDuenio().getId_duenio());

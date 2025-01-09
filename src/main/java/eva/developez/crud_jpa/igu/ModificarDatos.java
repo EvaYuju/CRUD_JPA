@@ -13,15 +13,15 @@ public class ModificarDatos extends javax.swing.JFrame {
     
     Controller control = null;
     int num_cliente; // Vbla global que reciba
-    Mascota mascota = control.cargarMascota(num_cliente);
+    Mascota mascota;
 
 
     public ModificarDatos(int num_cliente) {
         control = new Controller(); 
-        this.num_cliente = num_cliente; // Obtenemos el dato de la vble
+        //this.num_cliente = num_cliente; // Obtenemos el dato de la vble
         initComponents();
         // Cargar datos
-        cargarDatos (num_cliente);
+        cargarDatos(num_cliente);
     }
 
     @SuppressWarnings("unchecked")
@@ -306,19 +306,26 @@ public class ModificarDatos extends javax.swing.JFrame {
         String nomMascota = txtNomMascota.getText();
         String raza = txtRaza.getText();
         String color = txtColor.getText();
-        String observ = txtObserv.getText();
-        String nomDuenio = txtNomDuenio.getText();
-        String tlf = txtTlf.getText();
         String alergico = (String) cmbAlerg.getSelectedItem();
         String atEsp = (String) cmbAtEsp.getSelectedItem();
         
-        //control.guardar(nomMascota,raza,color,alergico,atEsp,nomDuenio,tlf,observ); 
-        // * Ahora hay que hacerla para mascota y dueño (2 tablas)
-        control.modificarMascota(mascota , nomMascota,raza,color,alergico,atEsp,nomDuenio,tlf,observ); 
-        
-        // Crear mensaje 
-        mostrarMensaje("Edición realizada correctamente", "Info", "Edición correcta");
+        String nomDuenio = txtNomDuenio.getText();
+        String tlf = txtTlf.getText();
+        String observ = txtObserv.getText(); //++orden igual que tabla!
 
+        //control.guardar(*nomMascota,raza,color,alergico,atEsp,nomDuenio,tlf,observ); 
+        // * Ahora hay que hacerla para mascota y dueño (2 tablas) ++//orden igual que tabla!
+        control.modificarMascota(mascota , nomMascota,raza,color,alergico,atEsp,nomDuenio,tlf,observ); 
+       
+        VerDatos pantalla = new VerDatos();
+        pantalla.setVisible(true);
+        pantalla.setLocationRelativeTo(null);
+         
+        // Crear mensaje 
+        
+        this.dispose(); // cierra la ventana de edicion
+        //VerDatos.cargarTabla();
+        mostrarMensaje("Edición realizada correctamente", "Info", "Edición correcta");
     }//GEN-LAST:event_btnGuardarActionPerformed
 
 
@@ -354,6 +361,7 @@ public class ModificarDatos extends javax.swing.JFrame {
 
     private void cargarDatos(int num_cliente) {
         
+        this.mascota = control.cargarMascota(num_cliente);
         // Setear datos en la interfaz
         txtNomMascota.setText(mascota.getNombreMascota());
         txtRaza.setText(mascota.getRaza());
@@ -378,7 +386,7 @@ public class ModificarDatos extends javax.swing.JFrame {
 
     }
     
-      private void mostrarMensaje(String mensaje, String tipo, String titulo) {
+    private void mostrarMensaje(String mensaje, String tipo, String titulo) {
     // Crear mensaje 
     JOptionPane optionPane = new JOptionPane(mensaje);
     if (tipo.equals("Info")) {
@@ -389,5 +397,5 @@ public class ModificarDatos extends javax.swing.JFrame {
     JDialog dialog = optionPane.createDialog(titulo);
     dialog.setAlwaysOnTop(true);
     dialog.setVisible(true);
-}
+    }
 }
